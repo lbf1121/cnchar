@@ -1,3 +1,6 @@
+//Author:theajack
+//http://www.theajack.com
+//http://www.theajack.com/cnchar
 //参考自以下两篇文章
 //https://my.oschina.net/tommyfok/blog/202412
 //http://www.sharejs.com/js/math/170
