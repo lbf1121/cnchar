@@ -1,17 +1,167 @@
-<!doctype html>
-<html lang="zh-Hans" class="bg-white" >
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>测试</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="keywords" content="汉字,拼音,笔画数">  
+    <meta name="description" content="获取汉字的拼音和笔画数的js库">  
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+    <title>cnchar.js by theajack</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css"/>
   </head>
-  <style type="text/css">
-  </style>
   <body>
+    <!--header-->
+    <div id="header">
+      <div id="title">cnchar.js</div>
+      <div id="smallTitle">获取汉字的拼音和笔画数的js库</div>
+      <div id="viewProject" class="border-btn" onclick="J.open('https://github.com/theajack/cnchar')">View project on github</div>
+      
+    </div>
+    <!--intro-->
+    <div id="introPart" class="bg-gray text-black part clearfix">
+      <div class="part-title">功能</div>
+      <div class="func-item">
+        <img class="func-img" src="assets/images/spell.png"/>
+        <div class="func-text">完整拼音</div>
+      </div>
+      <div class="func-item">
+        <img class="func-img" src="assets/images/spell_first.png"/>
+        <div class="func-text">拼音首字母</div>
+      </div>
+      <div class="func-item">
+        <img class="func-img" src="assets/images/stroke.png"/>
+        <div class="func-text">笔画数</div>
+      </div>
+    </div>
+		
+    
+    <!--download-->
+    <div id="downloadPart" class="bg-dark text-white part">
+      <div class="part-title hassmall">下载</div>
+      <div class="part-title small">引用地址： http://www.theajack.com/cnchar/assets/js/cnchar.js</div>
+      <div id="copyBtn" class="border-btn" onclick="J.open('assets/js/cnchar-ansi.js')">或点击复制源码</div>
+    </div>
+    <!--api-->
+    <div id="apiPart" class="bg-gray part clearfix">
+      <div class="part-title text-black relative">API文档</div>
+      <div class="api-item">
+        <div class="api-item-title">.spell()</div>
+        <div class="api-item-text">获取汉字完整拼音</div>
+        <div class="api-content-wrapper">
+          <div class="api-item-ltitle">如何使用</div>
+          <div class="api-content clearfix">
+            "测试".spell()
+            <span class="api-content-result" onclick="this.text('测试'.spell())">查看</span>
+          </div>
+          <div class="api-content clearfix">
+            "测试".spell("up")
+            <span class="api-content-result" onclick="this.text('测试'.spell('up'))">查看</span>
+          </div>
+          <div class="api-content clearfix">
+            "测试".spell("low")
+            <span class="api-content-result" onclick="this.text('测试'.spell('low'))">查看</span>
+          </div>
+          <div class="api-item-text">'upper','lower'都合法;不区分大小写</div>
+          <div class="api-item-text">非汉字会返回原字符串</div>
+        </div>
+        <div class="api-test-wrapper">
+          <div class="api-item-ltitle">尝试一下</div>
+          <input type="text" class="api-test-input" placeholder="请输入汉字"/>
+          <span class="api-test-btn" onclick="this.prev().val(this.prev().val().spell())">获取</span>
+        </div>
+      </div>
+      <div class="api-item">
+        <div class="api-item-title">.spellFirst()</div>
+        <div class="api-item-text">获取汉字拼音首字母</div>
+        <div class="api-content-wrapper">
+          <div class="api-item-ltitle">如何使用</div>
+          <div class="api-content clearfix">
+            "测试".spellFirst()
+            <span class="api-content-result" onclick="this.text('测试'.spellFirst())">查看</span>
+          </div>
+          <div class="api-content clearfix">
+            "测试".spellFirst("low")
+            <span class="api-content-result" onclick="this.text('测试'.spellFirst('low'))">查看</span>
+          </div>
+          <div style="height:1px"></div>
+          <div class="api-item-text">'lower'合法;不区分大小写</div>
+          <div class="api-item-text">非汉字会返回原字符串</div>
+        </div>
+        <div class="api-test-wrapper">
+          <div class="api-item-ltitle">尝试一下</div>
+          <input type="text" class="api-test-input" placeholder="请输入汉字"/>
+          <span class="api-test-btn" onclick="this.prev().val(this.prev().val().spellFirst())">获取</span>
+        </div>
+      </div>
+      <div class="api-item">
+        <div class="api-item-title">.stroke()</div>
+        <div class="api-item-text">获取汉字笔画数</div>
+      
+        <div class="api-content-wrapper">
+          <div class="api-item-ltitle">如何使用</div>
+          <div class="api-content clearfix">
+            "测试".stroke()
+            <span class="api-content-result" onclick="this.text('测试'.stroke())">查看</span>
+          </div>
+          <div class="api-item-text">非汉字会返回原字符串长度</div>
+        </div>
+        <div class="api-test-wrapper">
+          <div class="api-item-ltitle">尝试一下</div>
+          <input type="text" class="api-test-input" placeholder="请输入汉字"/>
+          <span class="api-test-btn" onclick="this.prev().val(this.prev().val().stroke())">获取</span>
+        </div>
+      </div>
+    </div>
+    <!--relate-->
+    <div id="relatePart" class="bg-dark text-white part " >
+      <div class="part-title hassmall">友情链接</div>
+      <div class="part-title small">(欢迎访问)</div>
+      <div class="clearfix">
+        <span class="relate-link" onclick="J.open('http://www.theajack.com/maze/')">迷宫</span>
+        <span class="relate-link" onclick="J.open('http://www.theajack.com/bombbattle/')">炸弹人大作战</span>
+        <span class="relate-link" onclick="J.open('http://www.theajack.com/jjump/')">摇摆玛丽</span>
+        <span class="relate-link" onclick="J.open('http://www.theajack.com/jetterjs/')">Jetter.js</span>
+        <span class="relate-link" onclick="J.open('http://www.theajack.com/')">个人主页</span>
+        <span class="relate-link" onclick="J.open('http://www.theajack.com/blog/')">个人博客</span>
+        <span class="relate-link" onclick="J.open('http://a.app.qq.com/o/simple.jsp?pkgname=com.main.theajack')">2048 plus</span>
+        <span class="relate-link" onclick="J.open('http://a.app.qq.com/o/simple.jsp?pkgname=com.example.stonefinance')">石头理财</span>
+        <span class="relate-link" onclick="J.show('In developing')">突破防线</span>
+        <span class="relate-link" onclick="J.open('http://bikeshare.imwork.net')">人人单车</span>
+        <span class="relate-link" onclick="J.open('http://www.theajack.com/bike/')">人人单车纯净版</span>
+      </div>
+    </div>
+    <!--footer-->
+    <div id="footer" class="bg-black text-white part">
+      <div id="footerLink">
+        <span class="link" onclick="J.open('https://github.com/theajack')">GitHub</span>
+        <span class="split-icon">|</span>
+        <span class="link" onclick="J.open('http://weibo.com/p/1005055304330572/home?from=page_100505&mod=TAB&is_all=1')">Sina Micro-blog</span>
+        <span class="split-icon">|</span>
+        
+        <span class="wechat-public d-hide" onclick="this.child(0).fadeToggle()">
+          WeChat Official Accounts
+          <img class="wechat-img" src="assets/images/wechat_qrcode.jpg"/>
+        </span>
+        <span class="split-icon d-hide">|</span>
+        
+        Email:theajack@qq.com
+        <div class=" d-show">
+          <span class="wechat-public" onclick="this.child(0).fadeToggle()">
+            WeChat Official Accounts
+            <img class="wechat-img" src="assets/images/wechat_qrcode.jpg"/>
+          </span>
+        </div>
+      </div>
+      <div id="copyright">
+        <span class="glyphicon glyphicon-copyright-mark"></span> 2017 TheaJack All rights reserved
+      </div>
+    </div>
     <script src="assets/js/jetter.min.js"></script>
     <script src="assets/js/cnchar.js"></script>
-    <script type="text/javascript">
-    </script>
+    <script src="assets/js/index.js"></script>
   </body>
-
 </html>
