@@ -791,7 +791,7 @@ a{
   margin: 10px 0;
 }
 .api-content-wrapper{
-  
+  min-height: 174px;
 }
 .api-content{
   margin: 3px 0;
@@ -905,6 +905,9 @@ a{
     font-size: 13px;
   }
   
+  .api-content-wrapper{
+    min-height: 0;
+  }
   .part{
     padding:15px;
   }

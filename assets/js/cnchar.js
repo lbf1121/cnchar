@@ -4,8 +4,7 @@
 //参考自以下两篇文章
 //https://my.oschina.net/tommyfok/blog/202412
 //http://www.sharejs.com/js/math/170
-var CnChar;
-(function(){
+(function(widnow){
 	var _options = {
 		checkPolyphone: false,
 		charcase: 'default'
@@ -64,16 +63,18 @@ var CnChar;
   function _getChar(ch){
     var unicode = ch.charCodeAt(0);
     //如果不在汉字处理范围之内,返回原字符,也可以调用自己的处理函数
-    if(unicode > 40869 || unicode < 19968)
+    if(unicode > 40869 || unicode < 19968){
       return ch; //dealWithOthers(ch);
-    //检查是否是多音字,是按多音字处理,不是就直接在strChineseFirstPY字符串中找对应的首字母
-    if(!_options.checkPolyphone) 
+    }//检查是否是多音字,是按多音字处理,不是就直接在strChineseFirstPY字符串中找对应的首字母
+    if(!_options.checkPolyphone) {
       return _char_dict.charAt(unicode-19968);
+    }
     return _polyphone[unicode] ? _polyphone[unicode] : _char_dict.charAt(unicode-19968);
   };
   function _getResult(chars){
-    if(!_options.checkPolyphone)
+    if(!_options.checkPolyphone){
       return chars.join('');
+    }
     var result = [''];
     for(var i=0,len=chars.length;i<len;i++){
       var str = chars[i], strlen = str.length;
@@ -138,7 +139,7 @@ var CnChar;
       }
     }
     return result;
-  }
+  };
 	function _extend(dst, src){
 		for(var property in src){
 			dst[property] = src[property];
@@ -163,7 +164,7 @@ var CnChar;
     }
     return num;
   };
-	CnChar={
+	window.CnChar={
     spell:function(str,type){
       return _spell(str,type);
     },
@@ -176,14 +177,14 @@ var CnChar;
     init: function (ops){
 			_options = _extend(_options, ops);
 		},
-  }
+  };
   String.prototype.spell=function(type){
     return _spell(this,type);
-  }
+  };
   String.prototype.spellFirst=function(type){
     return _spellFirst(this,type);
-  }
+  };
   String.prototype.stroke=function(){
     return _stroke(this);
-  }
+  };
 })()
