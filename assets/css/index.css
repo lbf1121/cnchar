@@ -1,4 +1,11 @@
-
+::selection{
+  background-color: #aaa;
+  color:#fff;
+}
+::-moz-selection{
+  background-color: #aaa;
+  color:#fff;
+}
 .clearfix:before, .clearfix:after {
     display: table;
     content: " ";
